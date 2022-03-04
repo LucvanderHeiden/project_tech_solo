@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/LucvanderHeiden/project_tech_solo/issues"
   },
-  "homepage": "https://github.com/LucvanderHeiden/project_tech_solo#readme"
+  "homepage": "https://github.com/LucvanderHeiden/project_tech_solo#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
 }
