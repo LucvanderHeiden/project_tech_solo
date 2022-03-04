@@ -13,6 +13,15 @@ app.get('/', (req, res) => {
     res.send('hello world')
 })
 
+app.get('/jan', (req, res) => {
+    res.send('hello jan')
+})
+
+app.get('/name/:name', (req, res) => {
+    res.send(`hello ${req.params.name}`)
+})
+
+
 
 
 /* Start webserver */
