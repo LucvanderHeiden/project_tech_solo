@@ -1,0 +1,23 @@
+{
+  "name": "projecttech_solo_repo",
+  "version": "1.0.0",
+  "description": "initial package json",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucvanderHeiden/project_tech_solo.git"
+  },
+  "keywords": [
+    "express",
+    "routing"
+  ],
+  "author": "Luc van der Heiden",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LucvanderHeiden/project_tech_solo/issues"
+  },
+  "homepage": "https://github.com/LucvanderHeiden/project_tech_solo#readme"
+}
