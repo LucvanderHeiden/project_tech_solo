@@ -5,35 +5,35 @@ const express = require('express')
 
 /* Constants and variables */
 const app = express();
-const port = 3000;
-const movies = [
+const port = 2000;
+const game = [
         {
             "id": 1,
             "slug": "call-of-duty",
             "name": "Call of Duty",
             "year": "2021",
-            "categories": ["action", "fps"]
+            "categories": ["Action", "FPS"]
         },
         {
             "id": 2,
             "slug": "battlefield",
             "name": "Battlefield",
             "year": "2021",
-            "categories": ["action", "fps"]
+            "categories": ["Action", "FPS"]
         },
         {
             "id": 3,
             "slug": "rocket-league",
             "name": "Rocket League",
             "year": "2015",
-            "categories": ["sports", "party"]
+            "categories": ["Sports", "Party"]
         },
         {
             "id": 4,
             "slug": "f1-2021",
             "name": "F1 2021",
             "year": "2021",
-            "categories": ["sports", "racing"]
+            "categories": ["Sports", "Racing"]
         }
 
 ]
@@ -47,7 +47,7 @@ app.get('/', (req, res) => {
     doc += '<title>Games</title>'
     doc += '<h1>Games</h1>'
 
-    games.forEach(game => {
+    game.forEach(game => {
         doc += "<section>";
         doc += `<h2>${game.name}</h2>`;
         doc += `<h3>${game.year}</h2>`;
