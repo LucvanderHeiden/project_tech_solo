@@ -57,6 +57,7 @@ app.get('/', (req, res) => {
             doc += `<li>${category}</li>`;
         });
         doc += "</ul>";
+        doc += `a href="/games/${game.id}/${game.slug}">More info</a>`
         doc += "</section";
     })
     res.send(doc);
