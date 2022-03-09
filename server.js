@@ -1,3 +1,4 @@
+const { generatePrimeSync } = require('crypto');
 const express = require('express')
 
 
@@ -39,17 +40,26 @@ const movies = [
 
 
 
+
 /* Routes */
 app.get('/', (req, res) => {
-    res.send('hello world')
-})
+    let doc ='<!doctype html>'
+    doc += '<title>Games</title>'
+    doc += '<h1>Games</h1>'
 
-app.get('/jan', (req, res) => {
-    res.send('hello jan')
-})
-
-app.get('/name/:name', (req, res) => {
-    res.send(`hello ${req.params.name}`)
+    games.forEach(game => {
+        doc += "<section>";
+        doc += `<h2>${game.name}</h2>`;
+        doc += `<h3>${game.year}</h2>`;
+        doc += "<h3>Categories:</h3>";
+        doc += "<ul>";
+        game.categories.forEach(category => {
+            doc += `<li>${category}</li>`;
+        });
+        doc += "</ul>";
+        doc += "</section";
+    })
+    res.send(doc);
 })
 
 
