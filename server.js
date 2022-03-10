@@ -42,10 +42,17 @@ const games = [
 
 ]
 
+/*********************************************************************
+Middleware
+***********************************************************************/
+app.use(express.static('public') =>)
+
+/*********************************************************************
+Routes 
+***********************************************************************/
 
 
-
-/* Routes */
+/* Gamelist page */
 app.get('/', (req, res) => {
     const id = req.params.id;
     const game = games.find(element => element.id == id);
@@ -70,6 +77,8 @@ app.get('/', (req, res) => {
     res.send(doc);
 })
 
+
+/* Game details page */
 app.get('/games/:id/:slug', (req, res) => {
     const id = req.params.id;
     const game = games.find(element => element.id == id);
@@ -90,6 +99,11 @@ app.get('/games/:id/:slug', (req, res) => {
     res.send(doc);
 })
 
+
+/* Error: 404 Page */
+app.use( (req, res) => {
+    res.status(404).send('Error 404: file not found')
+})
 
 /* Start webserver */
 app.listen(port, () => {
