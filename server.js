@@ -5,35 +5,39 @@ const express = require('express')
 
 /* Constants and variables */
 const app = express();
-const port = 2000;
-const game = [
+const port = 3000;
+const games = [
         {
             "id": 1,
             "slug": "call-of-duty",
             "name": "Call of Duty",
             "year": "2021",
-            "categories": ["Action", "FPS"]
+            "categories": ["Action", "FPS"],
+            "description": "Call of Duty is a military shooter published by Activision."
         },
         {
             "id": 2,
             "slug": "battlefield",
             "name": "Battlefield",
             "year": "2021",
-            "categories": ["Action", "FPS"]
+            "categories": ["Action", "FPS"],
+            "description": "Battlefield is a military shooter on large scale, developed by Dice."
         },
         {
             "id": 3,
             "slug": "rocket-league",
             "name": "Rocket League",
             "year": "2015",
-            "categories": ["Sports", "Party"]
+            "categories": ["Sports", "Party"],
+            "description": "Rocket League is a sports game where players control a rocket powered car trying to score goals against their opponents."
         },
         {
             "id": 4,
             "slug": "f1-2021",
             "name": "F1 2021",
             "year": "2021",
-            "categories": ["Sports", "Racing"]
+            "categories": ["Sports", "Racing"],
+            "description": "F1 2021 is the latest installment in the racing game series based around the Formula 1 championship."
         }
 
 ]
@@ -43,27 +47,48 @@ const game = [
 
 /* Routes */
 app.get('/', (req, res) => {
-    let doc ='<!doctype html>'
-    doc += '<title>Games</title>'
-    doc += '<h1>Games</h1>'
+    const id = req.params.id;
+    const game = games.find(element => element.id == id);
+    let doc ='<!doctype html>';
+    doc += '<title>Games</title>';
+    doc += '<h1>Games</h1>';
+    
 
-    game.forEach(game => {
+    games.forEach( game => {
         doc += "<section>";
         doc += `<h2>${game.name}</h2>`;
         doc += `<h3>${game.year}</h2>`;
         doc += "<h3>Categories:</h3>";
         doc += "<ul>";
-        game.categories.forEach(category => {
+        game.categories.forEach( category => {
             doc += `<li>${category}</li>`;
         });
         doc += "</ul>";
-        doc += `a href="/games/${game.id}/${game.slug}">More info</a>`
+        doc += `<a href="/games/${game.id}/${game.slug}">More info</a>`;
         doc += "</section";
     })
     res.send(doc);
 })
 
+app.get('/games/:id/:slug', (req, res) => {
+    const id = req.params.id;
+    const game = games.find(element => element.id == id);
+    console.log(id);
 
+    let doc ='<!doctype html>';
+    doc += `<title>Game details for ${game.name}</title>`;
+    doc += `<h1>${game.name}</h1>`;
+    doc += `<h2>${game.year}</h2>`;
+    doc += "<h2>Categories:</h3>";
+    doc += "<ul>";
+    game.categories.forEach( category => {
+         doc += `<li>${category}</li>`;
+    });
+    doc += "</ul>";
+    doc += `<p>${game.description}</p>`;
+
+    res.send(doc);
+})
 
 
 /* Start webserver */
