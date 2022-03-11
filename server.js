@@ -53,7 +53,7 @@ app.use(express.static('public'))
 Routes 
 ***********************************************************************/
 
-app.get('/', (req, res) => {
+app.set('/', (req, res) => {
     res.render('index');
 });
 
