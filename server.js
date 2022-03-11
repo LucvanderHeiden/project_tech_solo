@@ -1,12 +1,14 @@
 const { generatePrimeSync } = require('crypto');
 const express = require('express')
 
+const app = express();
+
 /* Register view engine */
 app.set('view engine', 'ejs');          /* Bron gebruikt voor het opzetten van EJS: https://www.youtube.com/watch?v=yXEesONd_54 (The Net Ninja) */
 
 
 /* Constants and variables */
-const app = express();
+
 const port = 3000;
 const games = [
         {
@@ -53,7 +55,7 @@ app.use(express.static('public'))
 Routes 
 ***********************************************************************/
 
-app.set('/', (req, res) => {
+app.get('/', (req, res) => {
     res.render('index');
 });
 
