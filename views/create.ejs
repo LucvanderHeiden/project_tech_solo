@@ -8,17 +8,13 @@
 </head>
 <body>
     <a href="/"><h1>Account setup</h1></a>
-    <h2>Create new account</h2>
-    <button>+</button>
     <form action="">
-        <h2>Or log in using an existing account</h2>
-        <h3>Email</h3>
-        <textarea name="login_email" id="login_email" cols="20" rows="1"></textarea>
-        <h3>Password</h3>
-        <textarea name="login_password" id="login_password" cols="20" rows="1"></textarea>
-        <input type="checkbox" id="remember" name="remember" value="remember_yes">
-        <label for="remember"> Remember me</label><br>
-        <a href="/recover">I forgot my password</a>
-    </form>    
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email"><br>
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+    </form> 
 </body>
 </html>
