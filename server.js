@@ -59,6 +59,10 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
+app.get('/create', (req, res) => {
+    res.render('create');
+});
+
 /* Gamelist page */
 app.get('/', (req, res) => {
     const id = req.params.id;
