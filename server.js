@@ -53,6 +53,9 @@ app.use(express.static('public'))
 Routes 
 ***********************************************************************/
 
+app.get('/', (req, res) => {
+    res.render('index');
+});
 
 /* Gamelist page */
 app.get('/', (req, res) => {
