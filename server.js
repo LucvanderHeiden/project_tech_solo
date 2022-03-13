@@ -47,9 +47,18 @@ const games = [
 ]
 
 /*********************************************************************
-Middleware
+Middleware              Bron gebruikt voor het opzetten van EJS: https://www.youtube.com/watch?v=_GJKAs7A0_4 (The Net Ninja)
 ***********************************************************************/
 app.use(express.static('public'))
+app.use((req, res, next) => {
+    console.log('new request made: ');
+    console.log('host: ', req.hostname);
+    console.log('path: ', req.path);
+    console.log('method: ', req.method);
+    next();
+})
+
+
 
 /*********************************************************************
 Routes 
