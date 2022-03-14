@@ -1,11 +1,15 @@
+// Seting up packages
 const { generatePrimeSync } = require('crypto');
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
+require('dotenv').config();
 
 // Connect to MongoDB
-const dbURI = 'mongodb+srv://luc1402:<password>@cluster0.sozgw.mongodb.net/project_tech?retryWrites=true&w=majority'
-mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true});
+const dbURI = process.env.DATABASE_URI;
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
+    .then((result) => console.log('connected to database'))
+    .catch((err) => console.log(err))
 /* Register view engine */
 app.set('view engine', 'ejs');          /* Bron gebruikt voor het opzetten van EJS: https://www.youtube.com/watch?v=yXEesONd_54 (The Net Ninja) */
 
