@@ -15,7 +15,7 @@ const app = express();
 // Connect to MongoDB
 const dbURI = process.env.DATABASE_URI;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
-    .then((result) => console.log('connected to database'))
+    .then((result) => console.log('connected to database'))             /* Console.log om te checken of er een succesvolle connectie met de database is */
     .catch((err) => console.log(err))
 /* Register view engine */
 app.set('view engine', 'ejs');          /* Bron gebruikt voor het opzetten van EJS: https://www.youtube.com/watch?v=yXEesONd_54 (The Net Ninja) */
@@ -75,7 +75,7 @@ app.post('/api/login', async (req, res) => {
 })
 
 app.post('/api/register', async (req, res) => {
-    const {username, email, password: plainTextPassword} = req.body
+    const {username, email, password: plainTextPassword, pc, playstation, xbox} = req.body
 
     // Foutmeldingen bij het niet of verkeerd invoeren van velden
     if(!username || typeof username !== 'string') {
@@ -102,7 +102,10 @@ app.post('/api/register', async (req, res) => {
         const response = await User.create({
         username,
         email,
-        password
+        password,
+        pc,
+        playstation,
+        xbox
     })
     console.log('User created succesfully:', response)
     }

@@ -16,7 +16,15 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    
+    pc: {
+        type: Boolean,
+    },
+    playstation: {
+        type: Boolean,
+    },
+    xbox: {
+        type: Boolean,
+    }
 },
 {collection: 'users'},
 {timestamps: true})          /*Dit geeft automatische timestamps zodat we kunnen zien wanneer er data is toegevoegd/aangepast.*/
