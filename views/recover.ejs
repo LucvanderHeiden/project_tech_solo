@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./partials/head.ejs') %>            <!--  Helaas geeft deze line een foutmelding in VSC, echter werkt de code wel gewoon zonder enige problemen. -->
+    
+<body>
+    <a href="/"><h1>Game, set, match!</h1></a>
+    <h2>Recover your account</h2>
+    <p>Fill in your username and email adress below to request an email to change your password.</p>
+    <form id="recover">
+        <input type="text" id="username" placeholder="Username..."/>
+        <input type="email" id="email" placeholder="Email..."/>
+        <input type="submit" value="Recover password"/>
+    </form>
+</body>
+</html>

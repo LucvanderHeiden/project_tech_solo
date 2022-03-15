@@ -1,3 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+/* Bron: https://fonts.google.com/specimen/Bebas+Neue#standard-styles */
+
 body {
-    background-color: lightcoral;
+    background-color: midnightblue;
+    color: white;
+
+    font-family: 'Bebas Neue', cursive;
+    font-size: 1.5em;
+
+    text-align: center;
+}
+
+div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+a {
+    color: cyan;
+}
+
+button:first-of-type {
+    font-size: 1.2em;
+    font-weight: 800;
+
+    margin: 1.4em;
+    padding: 1.1em;
+
+    border-radius: 5em;
+    border-width: 10px;
+
+    color: white;
+    background-color: cyan;
+
+    transition: 0.25s;
+}
+
+button:first-of-type:hover {
+    border-color: white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+input {
+    margin: 1.1em;
+    font-size: 1.05em;
+
+    color: white;
+    background-color: black;
+}
+
+input[type=checkbox] {
+    visibility: hidden;
+}
+
+input[type=submit] {
+    border-radius: 10px;
+    width: 10em;
+
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1.2em;
+    padding-top: .9em;
+    padding-bottom: .9em;
+    ;
+    color: black;
+    background-color: cyan;
+
+    font-weight: bold;
+}
+
+input[type=checkbox]:checked+label {
+    color: cyan;
 }

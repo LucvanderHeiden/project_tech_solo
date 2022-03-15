@@ -53,6 +53,11 @@ app.get('/create', (req, res) => {
     res.render('create');
 });
 
+app.get('/recover', (req, res) => {
+    res.render('recover');
+});
+
+
 app.post('/api/login', async (req, res) => {
     const { username, password } = req.body
     const user = await User.findOne({ username }).lean()          /* Door .lean toe te voegen geef je aan dat je niet alle extra informatie eromheen nodig hebt.*/

@@ -3,17 +3,22 @@
     <%- include('./partials/head.ejs') %>          <!--  Helaas geeft deze line een foutmelding in VSCode, echter werkt de code wel gewoon zonder enige problemen. -->
 
 <body>
-    <a href="/"><h1>Account setup</h1></a>
+    <a href="/"><h1>Game, set, match</h1></a>
+    <h2>Account setup</h2>
     <form id="register">
-        <input type="text" id="username" placeholder="Username"/>
-        <input type="email" id="email" placeholder="Email"/>
-        <input type="password" id="password" placeholder="Password"/>
-        <p>Platform of choice</p>
-        <input type="checkbox" id="pc" name="platform" value="pc"/> PC
-        <input type="checkbox" id="playstation" name="platform" value="playstation"/> Playstation
-        <input type="checkbox" id="xbox" name="platform" value="xbox"/> Xbox
-        
-        <input type="submit" value="Submit Form"/>
+        <input type="text" id="username" autocomplete="off" placeholder="Username..."/>
+        <input type="email" id="email" autocomplete="off" placeholder="Email..."/>
+        <input type="password" id="password" autocomplete="off" placeholder="Password..."/>
+        <h2>Platform of choice</h2>
+        <div>
+            <input type="checkbox" id="pc" name="platform" value="pc"/>
+            <label for="pc"> PC </label>
+            <input type="checkbox" id="playstation" name="platform" value="playstation"/>
+            <label for="playstation"> Playstation </label>
+            <input type="checkbox" id="xbox" name="platform" value="xbox"/>
+            <label for="xbox"> Xbox </label>
+        </div>
+        <input type="submit" value="Create account"/>
         <!-- <p>I play on...</p>
         <button>PC</button>
         <button>PS</button>
