@@ -3,7 +3,7 @@ const { generatePrimeSync } = require('crypto');
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
-const User = require('./models/User') 
+const User = require('./models/user') 
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 require('dotenv').config();
