@@ -23,7 +23,7 @@ app.set('view engine', 'ejs');          /* Bron gebruikt voor het opzetten van E
 
 // Port
 
-const port = 3000;
+// const port = 3000;
 
 
 /*********************************************************************
@@ -128,6 +128,10 @@ app.use( (req, res) => {
 })
 
 /* Start webserver */
-app.listen(port, () => {
-    console.log(`web server running on http://localhost:${port}`)
+var port = process.env.PORT || 3000;
+app.listen(port, "0.0.0.0", function() {
+console.log("Listening on Port 3000");
+
+// app.listen(port, () => {
+//     console.log(`web server running on http://localhost:${port}`)
 })
