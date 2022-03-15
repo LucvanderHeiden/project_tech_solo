@@ -7,15 +7,42 @@
     <p>Create new account</p>
     <a href="/create"><button>+</button></a>
     <p>Or log in using an existing account</p>
-    <form action="">
-        <label for="email">Email :</label><br>
-        <input type="email" id="email" name="email"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br>
-        <input type="checkbox" id="remember" name="remember" value="remember_yes">
+    <form id="login">
+        <input type="text" id="username" placeholder="Username"/>
+        <input type="password" id="password" placeholder="Password"/>
+        <input type="submit" value="Submit Form"/>
+        <!-- <input type="checkbox" id="remember" name="remember" value="remember_yes">
         <label for="remember"> Remember me</label><br>
-        <button>Login</button>
+        <button>Login</button> -->
     </form>
     <a href="/recover">I forgot my password</a>
+
+    <script>
+        const form = document.getElementById('login')
+        form.addEventListener('submit', login)
+
+        async function login(event) {
+            event.preventDefault()
+            const username = document.getElementById('username').value
+            const password = document.getElementById('password').value
+
+            const result = await fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    username,
+                    password
+                })
+            }).then((res) => res.json())
+
+            if(result.status === 'ok'){
+                console.log('Got the token: ', result.data)         /* No errors, everything has gone correctly */
+            } else {
+                alert(result.error)                                 /*De browser geeft een alert met daarin de bijpassende error message*/
+            }
+        }
+    </script>
 </body>
 </html>
