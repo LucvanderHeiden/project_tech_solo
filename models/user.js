@@ -59,5 +59,5 @@ const UserSchema = new Schema({
 {collection: 'users'},
 {timestamps: true})          /*Dit geeft automatische timestamps zodat we kunnen zien wanneer er data is toegevoegd/aangepast.*/
 
-const model = mongoose.model('UserSchema', UserSchema)
+const model = mongoose.model('user', UserSchema)
 module.exports = model

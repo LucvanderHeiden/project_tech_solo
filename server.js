@@ -83,7 +83,7 @@ app.post('/api/login', async (req, res) => {
 })
 
 app.post('/api/register', async (req, res) => {
-    const {username, email, password: plainTextPassword, pc, playstation, xbox} = req.body
+    const {username, email, password: plainTextPassword, pc, playstation, xbox, fortnite, minecraft, gta, league, f1, valorant, rl, cod, fifa, stardew} = req.body
 
     // Foutmeldingen bij het niet of verkeerd invoeren van velden
     if(!username || typeof username !== 'string') {
