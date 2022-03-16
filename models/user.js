@@ -24,7 +24,37 @@ const UserSchema = new Schema({
     },
     xbox: {
         type: Boolean,
-    }
+    },
+    fortnite: {
+        type: Boolean,
+    },
+    minecraft: {
+        type: Boolean,
+    },
+    gta: {
+        type: Boolean,
+    },
+    league: {
+        type: Boolean,
+    },
+    f1: {
+        type: Boolean,
+    },
+    valorant: {
+        type: Boolean,
+    },
+    rl: {
+        type: Boolean,
+    },
+    cod: {
+        type: Boolean,
+    },
+    fifa: {
+        type: Boolean,
+    },
+    stardew: {
+        type: Boolean,
+    },
 },
 {collection: 'users'},
 {timestamps: true})          /*Dit geeft automatische timestamps zodat we kunnen zien wanneer er data is toegevoegd/aangepast.*/
