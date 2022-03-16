@@ -10,7 +10,7 @@ require('dotenv').config();
 
 // Constants voor env variables (Geheime codes waarvan we niet willen dat ze openbaar in de code te vinden zijn.)
 const JWT_SECRET = process.env.JWT_SECRET_TOKEN;
-const IGDB_TOKEN = process.env.IGDB_SECRET_TOKEN;
+// const IGDB_TOKEN = process.env.IGDB_SECRET_TOKEN; (WIP)
 
 // Express app
 const app = express();
@@ -105,10 +105,11 @@ app.post('/api/register', async (req, res) => {
     }
     const password = await bcrypt.hash(plainTextPassword, 10)
 
-    const api_url = IGDB_TOKEN;
-    const respond = await fetch(api_url);
-    const json = await respond.json();
-    console.log(json);
+    // IGDB API (WIP)
+    // const api_url = IGDB_TOKEN;
+    // const respond = await fetch(api_url);
+    // const json = await respond.json();
+    // console.log(json);
 
     try {
         const response = await User.create({
