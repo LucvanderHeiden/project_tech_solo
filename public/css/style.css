@@ -12,9 +12,12 @@ body {
 }
 
 div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+div.platforms {
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 a {
@@ -45,7 +48,6 @@ form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: auto;
 }
 
 input {
@@ -57,7 +59,7 @@ input {
 }
 
 input[type=checkbox] {
-    visibility: hidden;
+    display: none;
 }
 
 input[type=submit] {
@@ -74,8 +76,32 @@ input[type=submit] {
     background-color: cyan;
 
     font-weight: bold;
+    transition: .25s;
+}
+
+input[type=submit]:hover {
+    border-color: white;
 }
 
 input[type=checkbox]:checked+label {
     color: cyan;
+    text-decoration: underline;
+}
+
+div img {
+    width: 6em;
+    opacity: 50%;
+    padding: .5em;
+    margin: 0;
+
+    transition: .25s;
+}
+
+div.platforms img {
+    width: 3em;
+}
+
+div input[type=checkbox]:checked+label img {
+    opacity: 100%;
+    transform: scale(1.05);
 }

@@ -8,8 +8,11 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 require('dotenv').config();
 
+// Constants voor env variables (Geheime codes waarvan we niet willen dat ze openbaar in de code te vinden zijn.)
 const JWT_SECRET = process.env.JWT_SECRET_TOKEN;
+const IGDB_TOKEN = process.env.IGDB_SECRET_TOKEN;
 
+// Express app
 const app = express();
 
 // Connect to MongoDB
@@ -23,7 +26,7 @@ app.set('view engine', 'ejs');          /* Bron gebruikt voor het opzetten van E
 
 // Port
 
-// const port = 3000;
+const port = process.env.PORT || 3000;
 
 
 /*********************************************************************
@@ -100,8 +103,12 @@ app.post('/api/register', async (req, res) => {
         return res.json({ status: 'error', error: 'Password too short, password must be at least 5 characters.'})
 
     }
-
     const password = await bcrypt.hash(plainTextPassword, 10)
+
+    const api_url = IGDB_TOKEN;
+    const respond = await fetch(api_url);
+    const json = await respond.json();
+    console.log(json);
 
     try {
         const response = await User.create({
@@ -110,7 +117,17 @@ app.post('/api/register', async (req, res) => {
         password,
         pc,
         playstation,
-        xbox
+        xbox,
+        fortnite,
+        minecraft,
+        gta,
+        league,
+        f1,
+        valorant,
+        rl,
+        cod,
+        fifa,
+        stardew
     })
     console.log('User created succesfully:', response)
     }
@@ -122,16 +139,17 @@ app.post('/api/register', async (req, res) => {
     res.json({ status: 'ok' })
 })
 
+// IGBD API setup (WIP)
+// app.post(IGDB_TOKEN, async (req, res) => {
+    
+// })
+
 /* Error: 404 Page */
 app.use( (req, res) => {
     res.status(404).send('Error 404: file not found')
 })
 
 /* Start webserver */
-var port = process.env.PORT || 3000;
 app.listen(port, "0.0.0.0", function() {
-console.log("Listening on Port 3000");
-
-// app.listen(port, () => {
-//     console.log(`web server running on http://localhost:${port}`)
+console.log("Web server running on port 3000");
 })
