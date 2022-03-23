@@ -35,7 +35,8 @@
             }).then((res) => res.json())
 
             if(result.status === 'ok'){
-                console.log('Got the token: ', result.data)         /* No errors, everything has gone correctly */
+                console.log('Login successfull: ', result.data)         /* No errors, everything has gone correctly */
+                window.location.href = 'http://localhost:3000/profile';
             } else {
                 alert(result.error)                                 /*De browser geeft een alert met daarin de bijpassende error message*/
             }

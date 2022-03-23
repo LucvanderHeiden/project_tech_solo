@@ -5,7 +5,8 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser')
 const User = require('./models/user') 
 const bcrypt = require('bcryptjs')
-const jwt = require('jsonwebtoken')
+const jwt = require('jsonwebtoken');
+const req = require('express/lib/request');
 require('dotenv').config();
 
 // Constants voor env variables (Geheime codes waarvan we niet willen dat ze openbaar in de code te vinden zijn.)
@@ -59,6 +60,11 @@ app.get('/create', (req, res) => {
 app.get('/recover', (req, res) => {
     res.render('recover');
 });
+
+// Dynamic profile page
+app.get('/profile', (req, res) => {
+    res.render('profile', {name: req.user.password})
+})
 
 
 app.post('/api/login', async (req, res) => {
