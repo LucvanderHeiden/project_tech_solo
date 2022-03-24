@@ -2,13 +2,16 @@
 /* Bron: https://fonts.google.com/specimen/Bebas+Neue#standard-styles */
 
 body {
-    background-color: midnightblue;
+    background-color: #154c79;
+    background-image: linear-gradient(to bottom right, #154c79, #032647);
     color: white;
 
     font-family: 'Bebas Neue', cursive;
     font-size: 1.5em;
 
     text-align: center;
+
+    padding-bottom: 10em;
 }
 
 div {

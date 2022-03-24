@@ -5,7 +5,10 @@
 <body>
     <a href="/"><h1>Game, set, match!</h1></a>
     <h2>User profile</h2>
-    <p>Welcome <%= name %></p>
+    <p>Welcome <%= username %></p>
+    <form action="/logout?_method=DELETE" method="post">
+        <input type="submit" value="Log out">
+    </form>
     <script>
         console.log({User})
     </script>
