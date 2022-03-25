@@ -146,7 +146,7 @@ app.post('/create', checkNotAuthenticated, async (req, res) => {
         res.redirect('/create');
     } else {
         try {
-            const passwordHash = await bcryptjs.hash(req.body.passowrd, 10)
+            const passwordHash = await bcryptjs.hash(req.body.password, 10)
             const user = new User({
                 username: req.body.username,
                 email: req.body.email,
