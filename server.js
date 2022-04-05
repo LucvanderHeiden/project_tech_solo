@@ -53,6 +53,7 @@ const dbURI = process.env.DATABASE_URI;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true})
     .then((result) => console.log('connected to database'))             /* Console.log om te checken of er een succesvolle connectie met de database is */
     .catch((err) => console.log(err))
+
 /* Register view engine */
 app.set('view engine', 'ejs');          /* Bron gebruikt voor het opzetten van EJS: https://www.youtube.com/watch?v=yXEesONd_54 (The Net Ninja) */
 
