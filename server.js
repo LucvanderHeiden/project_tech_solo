@@ -14,7 +14,6 @@ const {checkAuthenticated, checkNotAuthenticated} = require('./middleware/authen
 require('dotenv').config();
 
 const initializePassport = require('./passport');
-// const bcrypt = require('bcryptjs/dist/bcrypt');
 const bcryptjs = require('bcryptjs');
 initializePassport(
     passport,

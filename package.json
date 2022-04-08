@@ -1,26 +1,4 @@
 {
-  "name": "projecttech_solo_repo",
-  "version": "1.0.0",
-  "description": "initial package json",
-  "main": "server.js",
-  "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LucvanderHeiden/project_tech_solo.git"
-  },
-  "keywords": [
-    "express",
-    "routing"
-  ],
-  "author": "Luc van der Heiden",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/LucvanderHeiden/project_tech_solo/issues"
-  },
-  "homepage": "https://github.com/LucvanderHeiden/project_tech_solo#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
@@ -37,5 +15,23 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  
+  "author": "Luc van der Heiden",
+  "license": "MIT",
+  "name": "projecttech_solo_repo",
+  "version": "1.0.0",
+  "description": "initial package json",
+  "main": "server.js",
+  "keywords": [
+    "express",
+    "routing"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucvanderHeiden/project_tech_solo.git"
   }
 }
