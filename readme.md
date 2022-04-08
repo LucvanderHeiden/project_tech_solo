@@ -33,9 +33,13 @@ Als je al deze stappen succesvol hebt doorlopen zou de applicatie zonder problem
 
 Zoals eerder gezegd maakt deze applicatie gebruik van een MongoDB database om accountinformatie in op te slaan. Dit doe ik in dit project met behulp van een package genaamd Mongoose. Met Mongoose heb je de mogelijkheid van te voren aan te geven uit welke properties een object in de database zal gaan bestaan. Dit heet een schema. Hier is de structuur als volgt. 
 
+![user-schema](https://user-images.githubusercontent.com/26922676/162452681-13c0a915-de8a-4216-85d1-55eeee44274e.png)
+
 We geven dus aan welke properties een gebruiker moet bevatten. Username, email en password zijn allemaal required, deze moeten dus ingevuld worden door de persoon die een account probeert aan te maken. Username en email zijn daarnaast ook unique, dit betekent dat er geen twee accounts met dezelfde username of emailadres aangemaakt kunnen worden. Dit properties daaronder zijn de platforms en games die de gebruiker kan selecteren. Deze zijn van het type string zodat de value hiervan opgeslagen wordt in de database. Deze value kunnen we later gebruiken om de dynamische profielinformatie te laten zien op de profielpagina.
 
 In de database bevindt zich een collection met de naam users. In deze collection komen zoals de naam suggereert deze gebruikers te staan. Dit ziet er als volgt uit.
+
+![user-in-database](https://user-images.githubusercontent.com/26922676/162452860-c1f01e8f-d797-403f-a1d1-6819a2089688.png)
 
 Wanneer een gebruiker inlogt worden de username en email gecontroleerd en als deze informatie klopt wordt de gebruiker doorgestuurd naar zijn/haar profielpagina, hierin kan hij/zij zelf de user zien die zij hebben aangemaakt. 
 
