@@ -5,7 +5,12 @@
 <body>
     <a href="/"><h1>Game, set, match!</h1></a>
     <h2>User profile</h2>
-    <p>Welcome <%= username %></p>
+    <p>Welcome to your profile: <%= user.username %></p>
+    <p>Your email: <%= user.email %></p>
+    <h3>Your platforms: </h3> <img src="<%= user.pc %>" alt="picture">
+        <%= user.playstation %>
+        <%= user.xbox %>
+    </p>
     <form action="/logout?_method=DELETE" method="post">
         <input type="submit" value="Log out">
     </form>

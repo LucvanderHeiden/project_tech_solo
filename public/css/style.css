@@ -58,7 +58,7 @@ input {
     font-size: 1.05em;
 
     color: white;
-    background-color: black;
+    background-color: #101117;
 }
 
 input[type=checkbox] {
@@ -107,4 +107,11 @@ div.platforms img {
 div input[type=checkbox]:checked+label img {
     opacity: 100%;
     transform: scale(1.05);
+}
+
+@media (min-width: 600px) {
+    form {
+        margin-left: 16em;
+        margin-right: 16em;
+    }
 }

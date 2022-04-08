@@ -125,7 +125,7 @@ app.get('/create', (req, res) => {
 
 // Dynamic profile page
 app.get('/profile', checkAuthenticated, (req, res) => {
-    res.render('profile', { username: req.user.username });
+    res.render('profile', { user: req.user });
 });
 
 // Recover account page (Doesn't have any actual functionality)
@@ -151,10 +151,10 @@ app.post('/create', checkNotAuthenticated, async (req, res) => {
             const user = new User({
                 username: req.body.username,
                 email: req.body.email,
-                password: passwordHash
-                // pc: pc,
-                // playstation: playstation,
-                // xbox: xbox,
+                password: passwordHash,
+                pc: req.body.pc,
+                playstation: req.body.playstation,
+                xbox: req.body.xbox
                 // fortnite: fortnite,
                 // minecraft: minecraft,
                 // gta: gta,

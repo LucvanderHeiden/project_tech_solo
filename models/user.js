@@ -17,13 +17,13 @@ const UserSchema = new Schema({
         required: true
     },
     pc: {
-        type: Boolean,
+        type: String,
     },
     playstation: {
-        type: Boolean,
+        type: String,
     },
     xbox: {
-        type: Boolean,
+        type: String,
     },
     fortnite: {
         type: Boolean,
