@@ -17,13 +17,13 @@ const UserSchema = new Schema({
         required: true
     },
     pc: {
-        type: Boolean,
+        type: String,
     },
     playstation: {
-        type: Boolean,
+        type: String,
     },
     xbox: {
-        type: Boolean,
+        type: String,
     },
     fortnite: {
         type: Boolean,
@@ -59,5 +59,5 @@ const UserSchema = new Schema({
 {collection: 'users'},
 {timestamps: true})          /*Dit geeft automatische timestamps zodat we kunnen zien wanneer er data is toegevoegd/aangepast.*/
 
-const model = mongoose.model('user', UserSchema)
-module.exports = model
+const User = mongoose.model('user', UserSchema)
+module.exports = User

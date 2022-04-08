@@ -7,14 +7,17 @@
     <p>Create new account</p>
     <a href="/create"><button>+</button></a>
     <p>Or log in using an existing account</p>
-    <form id="login">
-        <input type="text" id="username" autocomplete="off" placeholder="Username..."/>
-        <input type="password" id="password" autocomplete="off" placeholder="Password..."/>
+    <% if (messages) { %>
+    <p><%= messages.error %></p>
+    <% } %>
+    <form id="login" action="/" method="post">
+        <input type="text" id="username" name="username" autocomplete="off" placeholder="Username..."/>
+        <input type="password" id="password" name="password" autocomplete="off" placeholder="Password..."/>
         <input type="submit" value="Login"/>
     </form>
     <a href="/recover">I forgot my password</a>
     <!-- Bron gebruikt voor het opzetten functionaliteit form: https://www.youtube.com/watch?v=b91XgdyX-SM (codedamn) -->
-    <script>
+    <!-- <script>
         const form = document.getElementById('login')
         form.addEventListener('submit', login)
 
@@ -41,6 +44,6 @@
                 alert(result.error)                                 /*De browser geeft een alert met daarin de bijpassende error message*/
             }
         }
-    </script>
+    </script> -->
 </body>
 </html>
