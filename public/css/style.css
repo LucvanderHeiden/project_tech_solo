@@ -23,6 +23,11 @@ div.platforms {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+article img {
+    width: 6em;
+    margin: 0;
+}
+
 a {
     color: cyan;
 }

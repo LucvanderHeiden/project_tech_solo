@@ -154,17 +154,17 @@ app.post('/create', checkNotAuthenticated, async (req, res) => {
                 password: passwordHash,
                 pc: req.body.pc,
                 playstation: req.body.playstation,
-                xbox: req.body.xbox
-                // fortnite: fortnite,
-                // minecraft: minecraft,
-                // gta: gta,
-                // league: league,
-                // f1: f1,
-                // valorant: valorant,
-                // rl: rl,
-                // cod: cod,
-                // fifa: fifa,
-                // stardew: stardew
+                xbox: req.body.xbox,
+                fortnite: req.body.fortnite,
+                minecraft: req.body.minecraft,
+                gta: req.body.gta,
+                league: req.body.league,
+                f1: req.body.f1,
+                valorant: req.body.valorant,
+                rl: req.body.rl,
+                cod: req.body.cod,
+                fifa: req.body.fifa,
+                stardew: req.body.stardew
             })
             await user.save();
             res.redirect('/');

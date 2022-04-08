@@ -10,7 +10,7 @@ const UserSchema = new Schema({
     email: {
         type: String,
         required: true,
-        unique: true                    /* Door hier 'unique' aan toe te voegen geef ik aan dat er geen twee accounts met dezelfde username gemaakt kunnen worden.*/
+        unique: true                    /* Door hier 'required' aan toe te voegen geef ik aan dat dit veld verplicht is en dus ingevuld MOET worden. */
     },
     password: {
         type: String,
@@ -26,37 +26,37 @@ const UserSchema = new Schema({
         type: String,
     },
     fortnite: {
-        type: Boolean,
+        type: String,
     },
     minecraft: {
-        type: Boolean,
+        type: String,
     },
     gta: {
-        type: Boolean,
+        type: String,
     },
     league: {
-        type: Boolean,
+        type: String,
     },
     f1: {
-        type: Boolean,
+        type: String,
     },
     valorant: {
-        type: Boolean,
+        type: String,
     },
     rl: {
-        type: Boolean,
+        type: String,
     },
     cod: {
-        type: Boolean,
+        type: String,
     },
     fifa: {
-        type: Boolean,
+        type: String,
     },
     stardew: {
-        type: Boolean,
+        type: String,
     },
 },
-{collection: 'users'},
+{collection: 'users'},       /* We geven aan dat deze informatie in de database in de collections genaamd users wordt opgeslagen. */
 {timestamps: true})          /*Dit geeft automatische timestamps zodat we kunnen zien wanneer er data is toegevoegd/aangepast.*/
 
 const User = mongoose.model('user', UserSchema)
