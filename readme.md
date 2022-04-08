@@ -43,6 +43,10 @@ In de database bevindt zich een collection met de naam users. In deze collection
 
 Wanneer een gebruiker inlogt worden de username en email gecontroleerd en als deze informatie klopt wordt de gebruiker doorgestuurd naar zijn/haar profielpagina, hierin kan hij/zij zelf de user zien die zij hebben aangemaakt. 
 
+## Heroku
+
+Er is ook een online versie beschikbaar van de applicatie op de volgende link: https://game-match-app.herokuapp.com/
+
 ## License
 
 Deze applicatie maakt gebruikt van een MIT License. 
