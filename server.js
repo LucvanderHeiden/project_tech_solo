@@ -86,9 +86,13 @@ app.post('/', checkNotAuthenticated, passport.authenticate('local', {
 
 app.post('/create', checkNotAuthenticated, async (req, res) => {
     const userIsFound = await User.findOne({username: req.body.username})
+    const emailIsFound = await User.findOne({email: req.body.email})
 
     if(userIsFound) {
         req.flash('error', 'Username has already been taken')
+        res.redirect('/create');
+    } else if(emailIsFound) {
+        req.flash('error', 'Emailadress has already been taken')
         res.redirect('/create');
     } else {
         try {
@@ -115,7 +119,6 @@ app.post('/create', checkNotAuthenticated, async (req, res) => {
             res.redirect('/');
         } catch (error) {
             console.log(error);
-            res.redirect('/create');
         }
     }
 })

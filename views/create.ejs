@@ -6,12 +6,21 @@
     <a href="/"><h1>Game, set, match</h1></a>
     <h2>Account setup</h2>
     <% if (messages) { %>
-    <p><%= messages.error %></p>
+    <p class="error_msg"><%= messages.error %></p>
     <% } %>
     <form id="create" action="/create" method="post">
-        <input type="text" id="username" name="username" autocomplete="off" placeholder="Username..."/>
-        <input type="email" id="email" name="email" autocomplete="off" placeholder="Email..."/>
-        <input type="password" id="password" name="password" autocomplete="off" placeholder="Password..."/>
+        <div class="input_control">
+            <input type="text" id="username" name="username" autocomplete="off" placeholder="Username..."/>
+            <div class="error"></div>
+        </div>
+        <div class="input_control">
+            <input type="text" id="email" name="email" autocomplete="off" placeholder="Email..."/>
+            <div class="error"></div>
+        </div>
+        <div class="input_control">
+            <input type="password" id="password" name="password" autocomplete="off" placeholder="Password..."/>
+            <div class="error"></div>
+        </div>
         <h2>Platform of choice</h2>
         <div class="platforms" >
             <input type="checkbox" id="pc" name="pc" value="images/pc.png"/>
@@ -46,5 +55,6 @@
         </div> 
         <input type="submit" value="Create account"/>
     </form>
+    <script defer src="/js/script.js"></script>
 </body>
 </html>

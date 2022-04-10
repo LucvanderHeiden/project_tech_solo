@@ -66,6 +66,11 @@ input {
     background-color: #101117;
 }
 
+input[type=text], input[type=password] {
+    margin-top: 1.5em;
+    margin-bottom: .3em;
+}
+
 input[type=checkbox] {
     display: none;
 }
@@ -112,6 +117,45 @@ div.platforms img {
 div input[type=checkbox]:checked+label img {
     opacity: 100%;
     transform: scale(1.05);
+}
+
+.input_control {
+    display: flex;
+    flex-direction: column;
+}
+
+.input_control input {
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+.input_control input:focus {
+    outline: 0;
+}
+
+.input_control.error input {
+    border-color: red;
+}
+
+.input_control.success input {
+    border-color: greenyellow;
+}
+
+.input_control .error {
+    color: red;
+    margin-left: 1em;
+    text-align: left;
+    display: block;
+}
+
+.error {
+    color: red;
+}
+
+.error_msg {
+    color: red;
+    text-decoration: underline;
+    margin-bottom: 0;
 }
 
 @media (min-width: 600px) {

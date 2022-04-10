@@ -5,16 +5,16 @@ const UserSchema = new Schema({
     username: {
         type: String,
         required: true,
-        unique: true                   /* Door hier 'unique' aan toe te voegen geef ik aan dat er geen twee accounts met dezelfde username gemaakt kunnen worden.*/
+        unique: true                  /* Door hier 'unique' aan toe te voegen geef ik aan dat er geen twee accounts met dezelfde username gemaakt kunnen worden.*/
     },
     email: {
         type: String,
         required: true,
-        unique: true                    /* Door hier 'required' aan toe te voegen geef ik aan dat dit veld verplicht is en dus ingevuld MOET worden. */
+        unique: true,                     /* Door hier 'required' aan toe te voegen geef ik aan dat dit veld verplicht is en dus ingevuld MOET worden. */
     },
     password: {
         type: String,
-        required: true
+        required: true,
     },
     pc: {
         type: String,
