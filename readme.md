@@ -45,7 +45,8 @@ Wanneer een gebruiker inlogt worden de username en email gecontroleerd en als de
 
 ## Heroku
 
-Er is ook een online versie beschikbaar van de applicatie op de volgende link: https://game-match-app.herokuapp.com/
+Er was ooit een online versie beschikbaar van de applicatie op de volgende link: https://game-match-app.herokuapp.com/
+Echter sinds Heroku geen gratis Dynos meer aanbiedt is deze niet meer actief.
 
 ## License
 
