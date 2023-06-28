@@ -46,7 +46,6 @@
           <input type="checkbox" id="pc" name="pc" value="images/pc.png" />
           <img src="images/pc.png" alt="Steam logo" />
         </label>
-        <!-- Repeat the same structure for other platforms -->
         <label class="platform-label" for="playstation">
           <input
             type="checkbox"
@@ -67,7 +66,7 @@
         </label>
       </div>
       <h2>Game I like to play</h2>
-      <!-- Bron voor cover-art afbeeldingen hieronder gebruikt, Twitch: https://www.twitch.tv/directory -->
+      <!-- Games worden direct gehaald uit IGDB via API -->
       <div class="games">
         <% games.forEach(game => { %>
         <div class="game">

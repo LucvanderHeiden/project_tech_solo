@@ -3,15 +3,11 @@ const username = document.getElementById('username');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 
-// form.addEventListener('submit', e => {
-//     validateInputs();
-// })
-
 form.addEventListener('submit', e => {
-    e.preventDefault(); // Prevent the default form submission behavior
+    e.preventDefault(); // Form wordt niet automatisch gesubmit totdat inputs valid zijn
 
     if (validateInputs()) {
-        // The inputs are valid, allow the form submission
+        // Checkt of de inputs valid zijn voordat de form wordt gesubmit 
         form.submit();
     }
 });
@@ -48,62 +44,36 @@ const isValidEmail = email => {
     return pattern.test(String(email).toLowerCase());
 }
 
-// const validateInputs = () => {
-//     const usernameValue = username.value.trim();            /* Trim zorgt ervoor dat alle whitespace van een string wordt weggehaald*/
-//     const emailValue = email.value.trim();
-//     const passwordValue = password.value.trim();
-
-//     if(usernameValue === '') {
-//         showError(username, 'Please choose a username')
-//     } else {
-//         showSuccess(username);
-//     }
-
-//     if(emailValue === '') {
-//         showError(email, 'Please fill in your email');
-//     } else if (!isValidEmail(emailValue)) {
-//         showError(email, 'Choose a valid email adress');
-//     } else {
-//         showSuccess(email);
-//     }
-
-//     if(passwordValue === '') {
-//         showError(password, 'Please choose a password');
-//     } else {
-//         showSuccess(password);
-//     }
-//  }
-
 const validateInputs = () => {
-    const usernameValue = username.value.trim();
+    const usernameValue = username.value.trim();            /* Trim zorgt ervoor dat alle whitespace van een string wordt weggehaald*/
     const emailValue = email.value.trim();
     const passwordValue = password.value.trim();
 
     if (usernameValue === '') {
         showError(username, 'Please choose a username');
-        return false; // Prevent form submission
+        return false; // Houdt form submission tegen
     } else {
         showSuccess(username);
     }
 
     if (emailValue === '') {
         showError(email, 'Please fill in your email');
-        return false; // Prevent form submission
+        return false; // Houdt form submission tegen
     } else if (!isValidEmail(emailValue)) {
         showError(email, 'Choose a valid email address');
-        return false; // Prevent form submission
+        return false; // Houdt form submission tegen
     } else {
         showSuccess(email);
     }
 
     if (passwordValue === '') {
         showError(password, 'Please choose a password');
-        return false; // Prevent form submission
+        return false; // Houdt form submission tegen
     } else {
         showSuccess(password);
     }
 
-    return true; // Allow form submission
+    return true; // Laat form submission toe
 };
 
 const gameLabels = document.querySelectorAll('.game-label');
@@ -133,7 +103,7 @@ platformLabels.forEach(label => {
     }
   });
 
-  // Add event listener for touch devices
+  // Voegt een eventlistener toe voor touch apparaten
   label.addEventListener('touchstart', () => {
     checkbox.checked = !checkbox.checked;
     label.classList.toggle('checked');
