@@ -1,60 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partials/head.ejs') %>          <!--  Helaas geeft deze line een foutmelding in VSCode, echter werkt de code wel gewoon zonder enige problemen. -->
+  <%- include('./partials/head.ejs') %>
+  <!--  Helaas geeft deze line een foutmelding in VSCode, echter werkt de code wel gewoon zonder enige problemen. -->
 
-<body>
+  <body>
     <a href="/"><h1>Game, set, match</h1></a>
     <h2>Account setup</h2>
     <% if (messages) { %>
     <p class="error_msg"><%= messages.error %></p>
     <% } %>
     <form id="create" action="/create" method="post">
-        <div class="input_control">
-            <input type="text" id="username" name="username" autocomplete="off" placeholder="Username..."/>
-            <div class="error"></div>
+      <div class="input_control">
+        <input
+          type="text"
+          id="username"
+          name="username"
+          autocomplete="off"
+          placeholder="Username..."
+        />
+        <div class="error"></div>
+      </div>
+      <div class="input_control">
+        <input
+          type="text"
+          id="email"
+          name="email"
+          autocomplete="off"
+          placeholder="Email..."
+        />
+        <div class="error"></div>
+      </div>
+      <div class="input_control">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="off"
+          placeholder="Password..."
+        />
+        <div class="error"></div>
+      </div>
+      <h2>Platform of choice</h2>
+      <div class="platforms">
+        <label class="platform-label" for="pc">
+          <input type="checkbox" id="pc" name="pc" value="images/pc.png" />
+          <img src="images/pc.png" alt="Steam logo" />
+        </label>
+        <!-- Repeat the same structure for other platforms -->
+        <label class="platform-label" for="playstation">
+          <input
+            type="checkbox"
+            id="playstation"
+            name="playstation"
+            value="images/ps.png"
+          />
+          <img src="images/ps.png" alt="Playstation logo" />
+        </label>
+        <label class="platform-label" for="xbox">
+          <input
+            type="checkbox"
+            id="xbox"
+            name="xbox"
+            value="images/xbox.png"
+          />
+          <img src="images/xbox.png" alt="Xbox logo" />
+        </label>
+      </div>
+      <h2>Game I like to play</h2>
+      <!-- Bron voor cover-art afbeeldingen hieronder gebruikt, Twitch: https://www.twitch.tv/directory -->
+      <div class="games">
+        <% games.forEach(game => { %>
+        <div class="game">
+          <input
+            type="checkbox"
+            id="<%= game.id %>"
+            name="favoriteGames"
+            value="<%= game.id %>"
+          />
+          <label class="game-label" for="<%= game.id %>">
+            <%= game.name %> <% if (game.cover && game.cover.url) { %>
+            <img src="<%= game.cover.url %>" alt="<%= game.name %> Cover Art" />
+            <% } %>
+          </label>
         </div>
-        <div class="input_control">
-            <input type="text" id="email" name="email" autocomplete="off" placeholder="Email..."/>
-            <div class="error"></div>
-        </div>
-        <div class="input_control">
-            <input type="password" id="password" name="password" autocomplete="off" placeholder="Password..."/>
-            <div class="error"></div>
-        </div>
-        <h2>Platform of choice</h2>
-        <div class="platforms" >
-            <input type="checkbox" id="pc" name="pc" value="images/pc.png"/>
-            <label for="pc"> <img src="images/pc.png" alt="Steam logo"> </label>               <!-- Bron: https://commons.wikimedia.org/wiki/File:Steam_icon_logo.svg -->
-            <input type="checkbox" id="playstation" name="playstation" value="images/ps.png"/>
-            <label for="playstation"> <img src="images/ps.png" alt="Playstation logo"> </label>    <!-- Bron: https://nl.wikipedia.org/wiki/Bestand:Playstation_logo_colour.svg -->
-            <input type="checkbox" id="xbox" name="xbox" value="images/xbox.png"/>
-            <label for="xbox"> <img src="images/xbox.png" alt="Xbox logo"> </label>    <!-- Bron: https://commons.wikimedia.org/wiki/File:Xbox_one_logo.svg -->
-        </div>                            
-        <h2>Game I like to play</h2>                                    <!-- Bron voor cover-art afbeeldingen hieronder gebruikt, Twitch: https://www.twitch.tv/directory -->
-        <div class="games">
-            <input type="checkbox" id="fortnite" name="fortnite" value="images/fortnite.jpg"/>
-            <label for="fortnite"> <img src="images/fortnite.jpg" alt="Fortnite cover art"> </label>
-            <input type="checkbox" id="minecraft" name="minecraft" value="images/minecraft.jpg"/>
-            <label for="minecraft"> <img src="images/minecraft.jpg" alt="Minecraft cover art"> </label>
-            <input type="checkbox" id="gta" name="gta" value="images/gta.jpg"/>
-            <label for="gta"> <img src="images/gta.jpg" alt="Grand Theft Auto 5 cover art"> </label>
-            <input type="checkbox" id="league" name="league" value="images/league.jpg"/>
-            <label for="league"> <img src="images/league.jpg" alt="League of Legends cover art"> </label>
-            <input type="checkbox" id="f1" name="f1" value="images/f1.jpg"/>
-            <label for="f1"> <img src="images/f1.jpg" alt="F1 2021 cover art"> </label>
-            <input type="checkbox" id="valorant" name="valorant" value="images/valorant.jpg"/>
-            <label for="valorant"> <img src="images/valorant.jpg" alt="Valorant cover art"> </label>
-            <input type="checkbox" id="rl" name="rl" value="images/rl.jpg"/>
-            <label for="rl"> <img src="images/rl.jpg" alt="Rocket League cover art"> </label>
-            <input type="checkbox" id="cod" name="cod" value="images/cod.jpg"/>
-            <label for="cod"> <img src="images/cod.jpg" alt="Call of Duty Warzone cover art"> </label>
-            <input type="checkbox" id="fifa" name="fifa" value="images/fifa.jpg"/>
-            <label for="fifa"> <img src="images/fifa.jpg" alt="FIFA 22 cover art"> </label>
-            <input type="checkbox" id="stardew" name="stardew" value="images/stardew.jpg"/>
-            <label for="stardew"> <img src="images/stardew.jpg" alt="Stardew Valley cover art"> </label>
-        </div> 
-        <input type="submit" value="Create account"/>
+        <% }) %>
+      </div>
+      <input type="submit" value="Create account" />
     </form>
     <script defer src="/js/script.js"></script>
-</body>
+  </body>
 </html>

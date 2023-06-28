@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "axios": "^1.4.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "dotenv": "^16.0.0",
@@ -20,7 +21,6 @@
     "start": "node server.js",
     "start:dev": "nodemon server.js"
   },
-  
   "author": "Luc van der Heiden",
   "license": "MIT",
   "name": "projecttech_solo_repo",
