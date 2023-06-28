@@ -152,20 +152,18 @@ app.get('/create', (req, res) => {
   const fields = 'name,summary,cover.url'; // Include the cover.url field
   const limit = 20;
   const sort = 'rating:desc'; // Sort the games by rating in descending order
-  const year2023Start = new Date('2023-01-01').getTime() / 1000;
-  const year2023End = new Date('2023-12-31').getTime() / 1000;
-  const year2022Start = new Date('2022-01-01').getTime() / 1000;
-  const year2022End = new Date('2022-12-31').getTime() / 1000;
-  const year2021Start = new Date('2021-01-01').getTime() / 1000;
-  const year2021End = new Date('2021-12-31').getTime() / 1000;
+  const currentYear = new Date().getFullYear(); // Get the current year dynamically (useful so the games will still be relevant when the application is used years from now)
+  const startYear = currentYear - 3; // Calculate the start year as three years ago so we get games from the previous three years
 
+  const yearStart = new Date(`${startYear}-01-01`).getTime() / 1000;
+  const yearEnd = new Date(`${currentYear}-12-31`).getTime() / 1000;
 
   const headers = {
     'Client-ID': clientId,
     Authorization: `Bearer ${accessToken}`,
   };
 
-  const body = `fields ${fields}; sort ${sort}; limit ${limit}; where rating > 0 & (first_release_date >= ${year2023Start} & first_release_date <= ${year2023End} | first_release_date >= ${year2022Start} & first_release_date <= ${year2022End} | first_release_date >= ${year2021Start} & first_release_date <= ${year2021End} & platforms = [167]);`;
+  const body = `fields ${fields}; sort ${sort}; limit ${limit}; where rating > 0 & (first_release_date >= ${yearStart} & first_release_date <= ${yearEnd} & platforms = [167]);`;
 
   getAccessToken() // Call the function to retrieve the access token
     .then(() => {
@@ -187,6 +185,7 @@ app.get('/create', (req, res) => {
       res.status(500).send('An error occurred');
     });
 });
+
 
 
 app.delete('/logout', (req, res) => {
