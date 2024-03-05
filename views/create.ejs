@@ -77,9 +77,9 @@
             value="<%= game.id %>"
           />
           <label class="game-label" for="<%= game.id %>">
-            <%= game.name %> <% if (game.cover && game.cover.url) { %>
+            <% if (game.cover && game.cover.url) { %>
             <img src="<%= game.cover.url %>" alt="<%= game.name %> Cover Art" />
-            <% } %>
+            <%= game.name %> <% } %>
           </label>
         </div>
         <% }) %>
