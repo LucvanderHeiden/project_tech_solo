@@ -91,11 +91,11 @@ async function getAccessToken() {
 app.get('/create', (req, res) => {
   const endpoint = '/games';
   const fields = 'name, cover.url'; // Include the cover.url field
-  const limit = 20;
+  const limit = 30;
   const sort = 'rating:desc'; // Sort the games by rating in descending order
   const currentYear = new Date().getFullYear(); // Get the current year dynamically
-  const threeYearsBack = currentYear - 5;
-  const yearStart = new Date(`${threeYearsBack}-01-01`).getTime() / 1000;
+  const fiveYearsBack = currentYear - 5;
+  const yearStart = new Date(`${fiveYearsBack}-01-01`).getTime() / 1000;
   const yearEnd = new Date(`${currentYear}-12-31`).getTime() / 1000;
 
   const headers = {
@@ -103,7 +103,7 @@ app.get('/create', (req, res) => {
     Authorization: `Bearer ${accessToken}`,
   };
 
-  const body = `fields ${fields}; sort ${sort}; limit ${limit}; where rating > 0 & (first_release_date >= ${yearStart} & first_release_date <= ${yearEnd} & platforms = [167]);`;
+  const body = `fields ${fields}; sort ${sort}; limit ${limit}; where rating > 0 & rating_count > 100 & (first_release_date >= ${yearStart} & first_release_date <= ${yearEnd} );`;
     
   console.log('Requesting games from the API...'); // Log a message before fetching games
 
