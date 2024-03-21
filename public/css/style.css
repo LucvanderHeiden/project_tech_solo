@@ -24,21 +24,14 @@ div label {
     align-items: center;
     font-size: 0.85em;
     padding: 1em;
+
+    cursor: pointer;
 }
 
 div.games {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
-/* div img {
-    width: 5em;
-    opacity: 50%;
-    padding: .5em;
-    margin: 0;
-
-    transition: .25s;
-    cursor: pointer;
-} */
 
 div.game .game-label.checked {
   color: cyan;
@@ -68,7 +61,6 @@ div.game .game-label.checked img {
 .platforms label {
   display: inline-block;
   position: relative;
-  cursor: pointer;
 }
 
 .platforms label img {
