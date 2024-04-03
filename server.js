@@ -90,7 +90,7 @@ async function getAccessToken() {
 
 app.get('/create', (req, res) => {
   const endpoint = '/games';
-  const fields = 'name, cover.url'; // Include the cover.url field
+  const fields = 'name, cover.url';
   const limit = 30;
   const sort = 'rating:desc'; // Sort the games by rating in descending order
   const currentYear = new Date().getFullYear(); // Get the current year dynamically

@@ -4,13 +4,70 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 
 form.addEventListener('submit', e => {
-    e.preventDefault(); // Form wordt niet automatisch gesubmit totdat inputs valid zijn
+    e.preventDefault(); // Prevent the form from submitting automatically
+    
+    // Trigger the input event for each field to check validity
+    username.dispatchEvent(new Event('input'));
+    email.dispatchEvent(new Event('input'));
+    password.dispatchEvent(new Event('input'));
 
-    if (validateInputs()) {
-        // Checkt of de inputs valid zijn voordat de form wordt gesubmit 
-        form.submit();
+    if (!form.checkValidity()) {
+        form.reportValidity(); // Report all invalid fields
+    } else {
+        form.submit(); // Submit the form if all fields are valid
     }
 });
+
+username.addEventListener("input", (event) => {
+  if (username.validity.valueMissing) {
+    username.setCustomValidity('Please choose a username');
+    showError(username);
+  } else if (username.validity.tooShort || username.validity.tooLong) {
+    username.setCustomValidity('Username must be between 3 and 25 characters long');
+    showError(username);
+  } else {
+    username.setCustomValidity("");
+    showSuccess(username);
+  }
+});
+
+email.addEventListener("input", (event) => {
+  if (email.validity.valueMissing) {
+    email.setCustomValidity('Please fill in your email adress');
+    showError(email);
+  } else if (email.validity.typeMismatch) {
+    email.setCustomValidity('Please enter a valid email address');
+    showError(email);
+  } else {
+    email.setCustomValidity("");
+    showSuccess(email);
+  }
+});
+
+password.addEventListener("input", (event) => {
+  if (password.validity.valueMissing) {
+    password.setCustomValidity('Please choose a password');
+    showError(password);
+  } else if (password.validity.tooShort || password.validity.tooLong) {
+    password.setCustomValidity('Password must be between 8 and 30 characters long');
+    showError(password);
+  } else {
+    password.setCustomValidity("");
+    showSuccess(password);
+  }
+});
+
+const showError = element => {
+    const inputControl = element.parentElement;
+    inputControl.classList.add('error');
+    inputControl.classList.remove('success');
+}
+
+const showSuccess = element => {
+    const inputControl = element.parentElement;
+    inputControl.classList.add('success');
+    inputControl.classList.remove('error');
+}
 
 const scrollToError = () => {
     window.scroll({             /* Scroll automatisch naar boven na submit zodat de gebruiker eventuele error messages kan zien */
@@ -19,62 +76,6 @@ const scrollToError = () => {
     behavior: 'smooth'
     });
 }
-
-const showError = (element, message) => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-
-    errorDisplay.innerText = message;
-    inputControl.classList.add('error');
-    inputControl.classList.remove('success');
-    scrollToError();
-}
-
-const showSuccess = element => {
-    const inputControl = element.parentElement;
-    const errorDisplay = inputControl.querySelector('.error');
-
-    errorDisplay.innerHTML = '';
-    inputControl.classList.add('success');
-    inputControl.classList.remove('error');
-}
-
-const isValidEmail = email => {
-    const pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    return pattern.test(String(email).toLowerCase());
-}
-
-const validateInputs = () => {
-    const usernameValue = username.value.trim();            /* Trim zorgt ervoor dat alle whitespace van een string wordt weggehaald*/
-    const emailValue = email.value.trim();
-    const passwordValue = password.value.trim();
-
-    if (usernameValue === '') {
-        showError(username, 'Please choose a username');
-        return false; // Houdt form submission tegen
-    } else {
-        showSuccess(username);
-    }
-
-    if (emailValue === '') {
-        showError(email, 'Please fill in your email');
-        return false; // Houdt form submission tegen
-    } else if (!isValidEmail(emailValue)) {
-        showError(email, 'Choose a valid email address');
-        return false; // Houdt form submission tegen
-    } else {
-        showSuccess(email);
-    }
-
-    if (passwordValue === '') {
-        showError(password, 'Please choose a password');
-        return false; // Houdt form submission tegen
-    } else {
-        showSuccess(password);
-    }
-
-    return true; // Laat form submission toe
-};
 
 const gameLabels = document.querySelectorAll('.game-label');
 
@@ -115,7 +116,5 @@ platformLabels.forEach(label => {
     }
   });
 });
-
-
 
  console.log("script connected")

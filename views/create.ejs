@@ -17,16 +17,20 @@
           name="username"
           autocomplete="off"
           placeholder="Username..."
+          minlength="3"
+          maxlength="25"
+          required
         />
         <div class="error"></div>
       </div>
       <div class="input_control">
         <input
-          type="text"
+          type="email"
           id="email"
           name="email"
           autocomplete="off"
           placeholder="Email..."
+          required
         />
         <div class="error"></div>
       </div>
@@ -37,6 +41,9 @@
           name="password"
           autocomplete="off"
           placeholder="Password..."
+          minlength="8"
+          maxlength="30"
+          required
         />
         <div class="error"></div>
       </div>
