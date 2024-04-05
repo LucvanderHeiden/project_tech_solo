@@ -87,25 +87,13 @@ gameLabels.forEach(label => {
   });
 });
 
-const platformLabels = document.querySelectorAll('.platforms label');
+const platformLabels = document.querySelectorAll('.platform-label');
 
 platformLabels.forEach(label => {
   const checkbox = label.querySelector('input[type="checkbox"]');
   const image = label.querySelector('img');
 
   label.addEventListener('click', () => {
-    checkbox.checked = !checkbox.checked;
-    label.classList.toggle('checked');
-
-    if (checkbox.checked) {
-      image.classList.add('checked');
-    } else {
-      image.classList.remove('checked');
-    }
-  });
-
-  // Voegt een eventlistener toe voor touch apparaten
-  label.addEventListener('touchstart', () => {
     checkbox.checked = !checkbox.checked;
     label.classList.toggle('checked');
 
