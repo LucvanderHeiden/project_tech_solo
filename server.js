@@ -55,7 +55,7 @@ mongoose
   .then((result) => console.log('Connected to the database'))
   .catch((err) => console.log(err));
 
-/* Register view engine */
+// Register view engine
 app.set('view engine', 'ejs');
 
 // Port
@@ -69,7 +69,7 @@ app.get('/', checkNotAuthenticated, (req, res) => {
   res.render('index');
 });
 
-let accessToken; // Define the access token variable
+let accessToken;
 
 // Function to obtain the access token
 async function getAccessToken() {
@@ -93,7 +93,7 @@ app.get('/create', (req, res) => {
   const fields = 'name, cover.url';
   const limit = 30;
   const sort = 'rating:desc'; // Sort the games by rating in descending order
-  const currentYear = new Date().getFullYear(); // Get the current year dynamically
+  const currentYear = new Date().getFullYear(); // Get the current year dynamically (so it's always up-to-date)
   const fiveYearsBack = currentYear - 5;
   const yearStart = new Date(`${fiveYearsBack}-01-01`).getTime() / 1000;
   const yearEnd = new Date(`${currentYear}-12-31`).getTime() / 1000;
@@ -145,46 +145,6 @@ app.post('/', checkNotAuthenticated, passport.authenticate('local', {
   failureFlash: true,
 }));
 
-app.get('/create', (req, res) => {
-  const endpoint = '/games';
-  const fields = 'name,summary,cover.url'; // Include the cover.url field
-  const limit = 20;
-  const sort = 'rating:desc'; // Sort the games by rating in descending order
-  const currentYear = new Date().getFullYear(); // Get the current year dynamically (useful so the games will still be relevant when the application is used years from now)
-  const startYear = currentYear - 3; // Calculate the start year as three years ago so we get games from the previous three years
-
-  const yearStart = new Date(`${startYear}-01-01`).getTime() / 1000;
-  const yearEnd = new Date(`${currentYear}-12-31`).getTime() / 1000;
-
-  const headers = {
-    'Client-ID': clientId,
-    Authorization: `Bearer ${accessToken}`,
-  };
-
-  const body = `fields ${fields}; sort ${sort}; limit ${limit}; where rating > 0 & (first_release_date >= ${yearStart} & first_release_date <= ${yearEnd} & platforms = [167]);`;
-
-  getAccessToken() // Call the function to retrieve the access token
-    .then(() => {
-      axios
-        .post(`https://api.igdb.com/v4${endpoint}`, body, { headers })
-        .then((response) => {
-          const games = response.data;
-          console.log(games); // Log the games data to the console
-
-          res.render('create', { games });
-        })
-        .catch((error) => {
-          console.error('Error:', error.message);
-          res.status(500).send('An error occurred');
-        });
-    })
-    .catch((error) => {
-      console.error('Error:', error.message);
-      res.status(500).send('An error occurred');
-    });
-});
-
-
 
 app.delete('/logout', (req, res) => {
   req.logOut();
@@ -209,7 +169,7 @@ app.get('/access-token', (req, res) => {
     .then((response) => {
       const accessToken = response.data.access_token;
 
-      // Make a request to the IGDB API
+      // Making a request to the IGDB API
       axios
         .get('https://api.igdb.com/v4/games', {
           headers: {
@@ -217,8 +177,8 @@ app.get('/access-token', (req, res) => {
             Authorization: `Bearer ${accessToken}`,
           },
           params: {
-            fields: 'name,summary', // Specify the fields you want to retrieve
-            limit: 10, // Example: Limit the number of games to 10
+            fields: 'name,summary', 
+            limit: 10, // Limit the number of games to 10
           },
         })
         .then((response) => {
@@ -236,7 +196,7 @@ app.get('/access-token', (req, res) => {
     });
 });
 
-/* Start webserver */
+// Start webserver
 app.listen(port, '0.0.0.0', function () {
   console.log('Web server running on port 3000');
 });

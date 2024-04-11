@@ -4,24 +4,25 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 
 form.addEventListener('submit', e => {
-    e.preventDefault(); // Prevent the form from submitting automatically
+    e.preventDefault(); // Prevents default behavior (which would automatically submit the form)
     
-    // Trigger the input event for each field to check validity
+    // Check if all inputs are valid
     username.dispatchEvent(new Event('input'));
     email.dispatchEvent(new Event('input'));
     password.dispatchEvent(new Event('input'));
 
     if (!form.checkValidity()) {
-        form.reportValidity(); // Report all invalid fields
+        form.reportValidity(); // Report when fields are not valid
     } else {
-        form.submit(); // Submit the form if all fields are valid
+        form.submit(); // Submit the form only if all forms are valid
     }
 });
 
+// Username
 username.addEventListener("input", (event) => {
-  if (username.validity.valueMissing) {
-    username.setCustomValidity('Please choose a username');
-    showError(username);
+  if (username.validity.valueMissing) { //Check if 'valueMissing', which checks if the input is empty
+    username.setCustomValidity('Please choose a username'); // if it is empty display custom error message
+    showError(username);                                    // and add error class to change the look of the input
   } else if (username.validity.tooShort || username.validity.tooLong) {
     username.setCustomValidity('Username must be between 3 and 25 characters long');
     showError(username);
@@ -31,6 +32,7 @@ username.addEventListener("input", (event) => {
   }
 });
 
+// Email adress
 email.addEventListener("input", (event) => {
   if (email.validity.valueMissing) {
     email.setCustomValidity('Please fill in your email adress');
@@ -44,6 +46,7 @@ email.addEventListener("input", (event) => {
   }
 });
 
+// Password
 password.addEventListener("input", (event) => {
   if (password.validity.valueMissing) {
     password.setCustomValidity('Please choose a password');
@@ -57,6 +60,7 @@ password.addEventListener("input", (event) => {
   }
 });
 
+// Add & remove classes to show red or green input field
 const showError = element => {
     const inputControl = element.parentElement;
     inputControl.classList.add('error');
@@ -70,7 +74,7 @@ const showSuccess = element => {
 }
 
 const scrollToError = () => {
-    window.scroll({             /* Scroll automatisch naar boven na submit zodat de gebruiker eventuele error messages kan zien */
+    window.scroll({             /* Scrolls the window up to the top automatically so they user can easily see what's wrong in the form */
     top: 0,
     left: 0,
     behavior: 'smooth'
