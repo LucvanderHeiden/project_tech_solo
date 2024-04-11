@@ -22,13 +22,13 @@ form.addEventListener('submit', e => {
 username.addEventListener("input", (event) => {
   if (username.validity.valueMissing) { //Check if 'valueMissing', which checks if the input is empty
     username.setCustomValidity('Please choose a username'); // if it is empty display custom error message
-    showError(username);                                    // and add error class to change the look of the input
+    showError(username);                                    // and add error class to change the look of the input (to red)
   } else if (username.validity.tooShort || username.validity.tooLong) {
     username.setCustomValidity('Username must be between 3 and 25 characters long');
     showError(username);
   } else {
     username.setCustomValidity("");
-    showSuccess(username);
+    showSuccess(username);  // Add success class to change the look of the input (to green)
   }
 });
 
@@ -74,7 +74,7 @@ const showSuccess = element => {
 }
 
 const scrollToError = () => {
-    window.scroll({             /* Scrolls the window up to the top automatically so they user can easily see what's wrong in the form */
+    window.scroll({             /* Scrolls the window up to the top automatically so the user can easily see what's wrong in the form */
     top: 0,
     left: 0,
     behavior: 'smooth'
